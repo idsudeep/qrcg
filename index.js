@@ -17,12 +17,8 @@ app.use(bp.json());
 app.use(express.static('./views'));
 // Simple routing to the index.ejs file
 app.get("/", (req, res) => {
-    const fcode = 'Code';
-
-    qr.toDataURL(fcode, (err,src)=>{
-        if (err) res.send("Error occured");
-        res.render("index" , {src});
-    });
+    
+    res.render("index");
    
 });
 
@@ -32,14 +28,10 @@ app.get("/", (req, res) => {
 app.post("/generate", (req, res) => {
     const url = req.body.url;
 
-    if (url.length === 0) 
-    res.send("Empty Data!");
-   
-    qr.toDataURL(url, (err, src) => {
-        if (err) res.send("Error occured");
+
 
      
-        res.render("index", { src });
+        res.render("index");
     });
 });
 
