@@ -16,13 +16,19 @@ app.use(bp.json());
 
 // Simple routing to the index.ejs file
 app.get("/", (req, res) => {
-    res.render("index" , {src : true});
+    const fcode = 'Code';
+
+    qr.toDataURL(fcode, (err,src)=>{
+        if (err) res.send("Error occured");
+        res.render("index" , {src});
+    });
+   
 });
 
 // Blank input
 // Incase of blank in the index.ejs file, return error 
 // Error  - Empty Data!
-app.post("/scan", (req, res) => {
+app.post("/generate", (req, res) => {
     const url = req.body.url;
 
     if (url.length === 0) 
