@@ -1,6 +1,7 @@
 // Calling the packages that we need
 
 const express = require("express");
+const path = require("path");
 const app = express();
 const port = 3000;
 const bp = require("body-parser");
@@ -9,11 +10,11 @@ const qr = require("qrcode");
 // Using the ejs (Embedded JavaScript templates) as our template engine
 // and call the body parser  - middleware for parsing bodies from URL
 //                           - middleware for parsing json objects
-
+app.set('views', path.join(__dirname,'views'));
 app.set("view engine", "ejs");
 app.use(bp.urlencoded({ extended: false }));
 app.use(bp.json());
-
+app.use(express.static('./views'));
 // Simple routing to the index.ejs file
 app.get("/", (req, res) => {
     const fcode = 'Code';
