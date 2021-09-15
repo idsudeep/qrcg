@@ -2,7 +2,7 @@
 
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = 8000;
 const bp = require("body-parser");
 const qr = require("qrcode");
 
