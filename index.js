@@ -2,7 +2,7 @@
 
 const express = require("express");
 const app = express();
-const port = 3000;
+const PORT =  process.env.PORT || 3000;
 const bp = require("body-parser");
 const qr = require("qrcode");
   
@@ -39,4 +39,4 @@ app.post("/generate", (req, res) => {
 });
 
 // Setting up the port for listening requests
-app.listen(port, () => console.log("Server at 3000"));
+app.listen(PORT, () => console.log("Server at 3000"));
