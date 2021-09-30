@@ -5,6 +5,7 @@ const app = express();
 const PORT =  process.env.PORT || 3000;
 const bp = require("body-parser");
 const qr = require("qrcode");
+const { render } = require("ejs");
   
 app.set("view engine", "ejs");
 app.use(bp.urlencoded({ extended: false }));
@@ -12,20 +13,54 @@ app.use(bp.json());
 
 // Simple routing to the index.ejs file
 app.get("/", (req, res) => {
-    const fcode = 'Code';
+    const fcode = null;
 
-    qr.toDataURL(fcode, (err,src)=>{
-        if (err) res.send("Error occured");
-        res.render("index" , {src});
-    });
+    if(fcode){
+        qr.toDataURL(fcode, (err,src)=>{
+            if (err) res.send("Error occured");
+            res.render("index" , {src});
+        });
+
+    }else{
+
+        let fcode = 'code';
+        qr.toDataURL(fcode, (err,src)=>{
+            if (err) res.send("Error occured");
+            res.render("index" , {src});
+        });
+    }
+
+ 
    
 });
+
+
 
 // Blank input
 // Incase of blank in the index.ejs file, return error 
 // Error  - Empty Data!
-app.post("/generate", (req, res) => {
+
+app.get("/qrcg",(req,res)=>{
+    
+    const url = req.query.url;
+    console.log(url +'This Console');
+
+    
+   
+    qr.toDataURL(url, (err, src) => {
+        if (err) res.send("Error occured");
+
+        res.json({src});
+       
+      
+    });
+
+
+    
+});
+app.post("/search", (req, res) => {
     const url = req.body.url;
+    console.log(url +'This Console');
 
     if (url.length === 0) 
     res.send("Empty Data!");
@@ -33,7 +68,20 @@ app.post("/generate", (req, res) => {
     qr.toDataURL(url, (err, src) => {
         if (err) res.send("Error occured");
 
-     
+        res.json({src});
+      
+    });
+});
+app.post("/generate", (req, res) => {
+    const url = req.body.url;
+    console.log(url +'This Console');
+
+    if (url.length === 0) 
+    res.send("Empty Data!");
+   
+    qr.toDataURL(url, (err, src) => {
+        if (err) res.send("Error occured");
+
         res.render("index", { src });
     });
 });
