@@ -42,6 +42,7 @@ app.get("/", (req, res) => {
 
 app.get("/qrcg",(req,res)=>{
     
+    res.setHeader("Access-Control-Allow-Origin: *");
     const url = req.query.url;
     console.log(url +'This Console');
 
