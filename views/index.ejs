@@ -48,9 +48,10 @@
         <div class="row col-sm-8 offset-2">
 
             <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <img id="imgE" ></img>
+                <div class="card-body" style="margin-left: 50px;">
+                    <img id="imgE" style="width:70%"></img>
                 </div>
+                <p id='flash'></p>
                
                
        
@@ -61,9 +62,9 @@
             <aside class="col-sm-8 offset-2 text-center">
                 
                     <hr>
-<caption><p class="card-text">Scan the QR Code to access data!</p></caption>
-                <div class="card" style="overflow-y: scroll;">
-                <table class="table table-striped">
+<caption><p class="card-text">Scan the QR Code to Get access !</p></caption>
+                <div class="card" >
+                <table class="table table-striped"style="overflow-y: scroll;">
                     <tr class="table-primary">
                         <th scope="col">Userid</th>
                         <th>Status</th>
@@ -72,14 +73,17 @@
                         <th>Attendence percentage</th>
                         <th>Zone</th>
                     </tr>
-                    <tr>
-                        <td>101</td>
-                        <td>P</td>
-                        <td>A</td>
-                        <td>10</td>
-                        <td>9%</td>
-                        <td>safe</td>
-                    </tr>
+                    <tbody style="overflow-x: scroll;">
+                        <tr style="background-color: blueviolet;">
+                            <td>101</td>
+                            <td>P</td>
+                            <td>A</td>
+                            <td>10</td>
+                            <td>9%</td>
+                            <td>safe</td>
+                        </tr>
+                        
+                    </tbody>
                 </table>
                 </div>
                 <!-- card.// -->
@@ -100,7 +104,7 @@
  
     setInterval(function(){
 
-     var code = Math.floor(Math.random() * 10);
+     var code = Math.floor(Math.random() * 6969);
 
   
     
@@ -115,7 +119,11 @@
                 const imgElem =document.getElementById('imgE'); 
                 const baseStr64=data.src;
    imgElem.setAttribute('src',  baseStr64);
-   console.log(data);
+     var  flash =document.getElementById('flash').style='color:green, font-family:mono space; padding:10px;';
+
+   
+
+    document.getElementById('flash').innerHTML='Generated Code : '+ code;
             },
             error:function(err){
 
