@@ -1,4 +1,5 @@
 // Calling the packages that we need
+const dbConnectOne = require("./model/dbConnect");
 
 const express = require("express");
 const app = express();
@@ -6,6 +7,7 @@ const PORT =  process.env.PORT || 3000;
 const bp = require("body-parser");
 const qr = require("qrcode");
 const { render } = require("ejs");
+
   
 app.set("view engine", "ejs");
 app.use(bp.urlencoded({ extended: false }));
@@ -87,6 +89,11 @@ app.post("/generate", (req, res) => {
 
         res.render("index", { src });
     });
+});
+
+app.get("/reqone",(req,res)=>{
+    
+
 });
 
 // Setting up the port for listening requests
