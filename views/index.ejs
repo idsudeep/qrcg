@@ -156,7 +156,7 @@
 
 
 $.ajax({
-        url:'http://localhost:3000/getUserTable',
+        url:'https://whispering-island-54124.herokuapp.com/getUserTable',
         data:{'course':course,'subCode':subCode,'sem':sem},
         method:'GET',
        dataType: "json",
@@ -190,7 +190,7 @@ $.ajax({
           if(removeId != ''){
             $.ajax({
                     method:'get',
-                      url:'/removeUser',
+                      url:'https://whispering-island-54124.herokuapp.com/removeUser',
               contentType:'application/json',    
                   dataType:'json',
                       data:setData,
