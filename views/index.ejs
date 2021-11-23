@@ -123,7 +123,7 @@
     $.ajax({
           method:'GET',
           async:false,
-           url:'http://localhost:3000/getCodeForG',
+           url:'https://whispering-island-54124.herokuapp.com/getCodeForG',
            dataType:'json',
            data:{'course':course,'subCode':subCode,'sem':sem},
            success:function(data){qrcodeG = data.qrcode;},
