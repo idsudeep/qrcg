@@ -451,7 +451,7 @@ app.get("/getCodeForG",(req,res)=>{
             let cCount = await colName.countDocuments({"subCode":subCode});
            if(cCount !=0){
             const data = await colName.find().sort({_id:-1}).limit(1).toArray();
-           if(data){res.json({statusCode:'200',qrcode:data[0].qrcode});}
+           if(data){res.json({qrcode:data[0].qrcode}); }
          }
          
         }catch(error){ console.log(error.stack);}
