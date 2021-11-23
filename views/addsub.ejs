@@ -164,7 +164,7 @@
                       'subCode':subCode};
           $.ajax({
                   type:'GET',
-                  url: 'http://localhost:3000/assignnew',
+                  url: 'https://whispering-island-54124.herokuapp.com/assignnew',
                   data: load,
                   contentType: "application/json; charset=utf-8",
                   dataType: "json",
@@ -199,7 +199,7 @@ $('#statusEvent').click(function() {
 
           $.ajax({
                   type:'GET',
-                  url: 'http://localhost:3000/getstatusbefore',
+                  url: 'https://whispering-island-54124.herokuapp.com/getstatusbefore',
                   data: load,
                   contentType: "application/json; charset=utf-8",
                   dataType: "json",
@@ -230,7 +230,7 @@ $('#statusEvent').click(function() {
 
               $.ajax({
                             type:'GET',
-                            url: 'http://localhost:3000/cleardbreq',
+                            url: 'https://whispering-island-54124.herokuapp.com/cleardbreq',
                             data: query,
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
@@ -267,7 +267,7 @@ $('#statusEvent').click(function() {
     
               $.ajax({
                             type:'GET',
-                            url: 'http://localhost:3000/dbmovereq',
+                            url: 'https://whispering-island-54124.herokuapp.com/dbmovereq',
                             data: query,
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
@@ -296,7 +296,7 @@ $('#statusEvent').click(function() {
 
                                         $.ajax({
                                             method:'GET',
-                                            url:'http://localhost:3000/cleardbreq',
+                                            url:'https://whispering-island-54124.herokuapp.com/cleardbreq',
                                             data:query,
                                             contentType:"application/json; charset=utf-8",
                                             dataType:'json',
