@@ -106,11 +106,12 @@
            success:function(data){qrcodeG = data.qrcode;},
            error:function(error){
             console.log(console.error());
-           }
+          if(qrcodeG){callB();} 
+          }
          
      });
 
-     if(qrcodeG){
+     var callB = function(){
       $.ajax({
             method:'GET',
             url:'https://whispering-island-54124.herokuapp.com/qrcg',
@@ -191,7 +192,7 @@ $.ajax({
     });  
        
       
-    },84000);
+    },8400);
 
      }
     
