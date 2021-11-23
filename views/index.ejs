@@ -8,15 +8,11 @@
     <meta name="viewport" content="widthS=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.css"  crossorigin="anonymous">
 
     <!-- Custom CSS -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-        * {
-            font-family: Montserrat;
-        }
-        
+     
         .card {
             margin: 0 auto;
             /* Added */
@@ -28,7 +24,8 @@
     </style>
        <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -45,9 +42,9 @@
 
         <!-- Input card -->
         <!-- row -->
-        <div class="row col-sm-8 offset-2">
+        <div class="row col-sm-8 offset-2" >
 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem; ">
                 <div class="card-body" style="margin-left: 50px;">
                     <img id="imgE" style="width:70%"></img>
                 </div>
@@ -56,15 +53,15 @@
                
        
           </div>
-               <!-- row col-sm-8 offset-4// -->
+               <!-- row col-sm-8 offset-4// -->sho
         </div>
             <!-- col.// -->
             <aside class="col-sm-8 offset-2 text-center">
                 
                     <hr>
-<caption><p class="card-text">Scan the QR Code to Get access !</p></caption>
+<caption><p id="flip" style="color:green; font-size: medium; font-family: 'Courier New', Courier, monospace;"class="card-text">Scan the QR Code to Get access !</p></caption>
                 <div class="card" >
-                <table class="table table-striped"style="overflow-y: scroll;">
+                <!-- <table class="table table-striped"style="overflow-y: scroll;">
                     <tr class="table-primary">
                         <th scope="col">Userid</th>
                         <th>Status</th>
@@ -73,7 +70,7 @@
                         <th>Attendence percentage</th>
                         <th>Zone</th>
                     </tr>
-                    <tbody style="overflow-x: scroll;">
+                    <tbody ">
                         <tr style="background-color: blueviolet;">
                             <td>101</td>
                             <td>P</td>
@@ -84,7 +81,18 @@
                         </tr>
                         
                     </tbody>
-                </table>
+                </table> -->
+                <table id="people" class="table table-striped"style="overflow-y: scroll;">
+                    <thead>
+                      <tr>
+                        <th>Regno </th>
+                        <th>Percentage /Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody style="overflow-x: scroll;">
+                    </tbody>
+                  </table>
                 </div>
                 <!-- card.// -->
 
@@ -100,42 +108,182 @@
 
 </html>
 <script>
+    // api  url:'https://cryptic-stream-79146.herokuapp.com/qrcg'
     function loadon(){
  
     setInterval(function(){
 
-     var code = Math.floor(Math.random() * 6969);
+    //  var code = Math.floor(Math.random() * 6969);
+     const course =  new URLSearchParams(window.location.search).get('course');
+     const subCode = new URLSearchParams(window.location.search).get('subCode');
+     const sem = new URLSearchParams(window.location.search).get('sem'); 
 
-  
-    
+    var qrcodeG;
+ 
+    $.ajax({
+          method:'GET',
+          async:false,
+           url:'http://localhost:3000/getCodeForG',
+           dataType:'json',
+           data:{'course':course,'subCode':subCode,'sem':sem},
+           success:function(data){qrcodeG = data.qrcode;},
+           error:function(error){
+            console.log(console.error());
+           }
+         
+     });
+     console.log(qrcodeG);
 
-        
-        $.ajax({
+     if(qrcodeG){
+      $.ajax({
             method:'GET',
-            url:'https://cryptic-stream-79146.herokuapp.com/qrcg',
+            url:'http://localhost:3000/qrcg',
             dataType:'json',
-            data:{'url':code},
+            data:{'url':qrcodeG},
             success:function(data){
                 const imgElem =document.getElementById('imgE'); 
                 const baseStr64=data.src;
-   imgElem.setAttribute('src',  baseStr64);
+     imgElem.setAttribute('src',  baseStr64);
      var  flash =document.getElementById('flash').style='color:green, font-family:mono space; padding:10px;';
 
    
 
-    document.getElementById('flash').innerHTML='Generated Code : '+ code;
-            },
-            error:function(err){
-
-       
-          
-        
+    document.getElementById('flash').innerHTML='Generated Code : '+ qrcodeG;
             }
-        })
+        });
+     }
+// Table here go
+
+
+$.ajax({
+        url:'http://localhost:3000/getUserTable',
+        data:{'course':course,'subCode':subCode,'sem':sem},
+        method:'GET',
+       dataType: "json",
+    success: function(JSONObject) {
+        
+        
+      var peopleHTML = "";
       
-    },3000);
+      // Loop through Object and create peopleHTML
+      for (var key in JSONObject.arrresp) {
+
+
+        if (JSONObject.arrresp.hasOwnProperty(key)) {
+          
+     
+          
+            const remove= `<button class='removeOne btn-sm btn-danger' value='${JSONObject.arrresp[key]['std_id']}'>Remove</button>`;
+            peopleHTML += "<tr>";
+            peopleHTML += "<td class='stdID'>" + JSONObject.arrresp[key]["std_id"] + "</td>";
+            peopleHTML += "<td>" + JSONObject.arrresp[key]["status"] + "</td>";
+            peopleHTML += "<td>" + remove  + "</td>";
+            peopleHTML += "</tr>";
+        }
+      }
+         $("#people tbody").html(peopleHTML);
+
+        $(".removeOne").on('click',function(){
+          var removeId = $(this).val();  
+          document.getElementById('flip').innerHTML='Request Generated on Id :'+removeId;          
+               var setData=  {'course':course,'subCode':subCode,'sem':sem,'delId':removeId};
+          if(removeId != ''){
+            $.ajax({
+                    method:'get',
+                      url:'/removeUser',
+              contentType:'application/json',    
+                  dataType:'json',
+                      data:setData,
+                  success:function(data){
+
+                   setTimeout(() => {
+                    document.getElementById('flip').innerHTML=data.Title;
+
+                   }, 2000);
+                  },
+                    error:function(error){
+                 
+
+                  }
+                });
+          }
+        });
+        document.getElementById('flip').innerHTML='Scan the QR Code to Get access !';
+          
+    }
+    
+    });  
+       
+      
+    },5000);
 
      }
     
 
 </script>
+<!--
+
+     $.ajax({
+        url:'../url/get_table.php',
+        data:{collection:collection},
+        method:'POST',
+       dataType: "json",
+    success: function(JSONObject) {
+      var peopleHTML = "";
+      
+      // Loop through Object and create peopleHTML
+      for (var key in JSONObject) {
+
+
+        if (JSONObject.hasOwnProperty(key)) {
+          
+     
+          
+            const remove= `<button class='removeOne btn-sm btn-danger' value='${JSONObject[key]['std_id']}'>Remove</button>`;
+            peopleHTML += "<tr>";
+            peopleHTML += "<td class='stdID'>" + JSONObject[key]["std_id"] + "</td>";
+            peopleHTML += "<td>" + JSONObject[key]["status"] + "</td>";
+            peopleHTML += "<td>" + remove  + "</td>";
+            peopleHTML += "</tr>";
+        }
+      }
+         $("#people tbody").html(peopleHTML);
+
+        $(".removeOne").on('click',function(){
+             /*
+              find the id Value  from the same row 
+            var dynbutton = $(this),
+                        tr = dynbutton.closest('tr');
+             var regno  = tr.find('td.stdID').text();
+
+             */
+                var regno = $(this).val();
+             console.log(regno + 'this value .');
+
+          if(regno != ''){
+
+            var someData ={'regno':regno,
+                      'collection':collection};
+            $.ajax({
+                    method:'GET',
+                      url:'../url/req_removeOne.php?action=Req_removeOne',
+              contentType:'application/json',    
+                  dataType:'json',
+                      data:someData,
+                  success:function(removeOnereq){
+
+                  console.log(removeOnereq);
+
+                  },
+                    error:function(error){
+                 
+
+                  }
+                });
+          }
+        });
+          
+    }
+    
+    });   
+  -->

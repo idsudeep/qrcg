@@ -1,0 +1,225 @@
+﻿body{
+    margin-top:55px;
+}
+
+
+ video 
+{
+    
+  width:50%;
+    border: 2px solid #5cb85c;
+}
+header,footer {
+    height: 100px;
+    background: -webkit-linear-gradient(left,#859879 0%,#474c08 130%);
+    background-color: white;
+    padding: 0px;
+    margin: 5px;
+    text-align: center;
+}
+}
+
+.navbar-inverse {
+    background-color: rgba(255, 255, 255, .1) ;
+    border-color: #eee;
+}
+.navbar-inverse .navbar-nav > li > a:active {
+   
+    background-color: darkseagreen !important;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #333;
+    background-color: black !important;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: skyblue;
+}
+
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: rgba(255, 255, 255, .15);
+    border-color: #f5f5f5;
+    border: 1px solid lavender;
+}
+
+.leftNav, .releted-content{
+padding:5px;
+/*background-color:lightgray;*/
+min-height:730px;
+}
+
+
+
+
+.menu li a {
+    border-color: #ddd;
+    padding-left: 15px;
+    background-color: transparent;
+    background: -webkit-linear-gradient(left,#529525 0%,#e8f710 130%);
+    margin: 1px;
+    display:block;
+    width:100%;
+    padding: 5px;
+    color: Black;
+}
+.sidebar-nav {
+    display: block;
+    padding: 5px 15px;
+    color: #333;
+    font-size:15px;
+    text-decoration: none;
+    border-left: solid 3px #333;
+    background-color: #f3f3f3;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.article-footer {
+    background-color:#f3f3f3;
+    border: 1px solid #ddd;
+    margin:auto;
+}
+
+.btn-danger:active, .btn-danger.active {
+    background-color:forestgreen;
+    border:1px solid green;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color:forestgreen;
+}
+
+.tooltip-inner {
+    background-color:forestgreen;
+}
+
+
+
+
+/*  login  */
+
+
+    .main {
+        background-color: #FFFFFF;
+        width: 400px;
+        height: 500px;
+        margin: 2em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+        text-decoration: none;
+    
+    }
+    
+ .mainreg {
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 673px;
+    margin: 0em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgb(0 0 0 / 14%);
+    text-decoration: none;
+ }
+    .sign {
+        padding-top: 20px;
+        color: #8C55AA;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+    }
+    
+    .un {
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+    
+    form.form1 {
+        padding-top: 0px;
+    }
+    .register
+{
+    color: purple;
+    text-decoration: none !important;
+}
+    .pass {
+            width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+    
+   
+    .un:focus, .pass:focus {
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+        
+    }
+    
+    .submit {
+      cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+       /* background: linear-gradient(to right, #9C27B0, #E040FB);*/
+     background: linear-gradient(to right, #1a3c0cb8, #9269bf);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 35%;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+      
+    }
+    
+    .forgot {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #E1BEE7;
+        padding-top: 15px;
+    }
+    
+    a {
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #E1BEE7;
+        text-decoration: none
+    }
+    
+   /* @media (max-width: 600px) {
+        .main {
+            border-radius: 0px;
+        }*/
+        
+        
