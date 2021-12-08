@@ -109,7 +109,7 @@
            }
          
      });
-     console.log(qrcodeG);
+    
 
      if(qrcodeG){
       $.ajax({
@@ -198,69 +198,4 @@ $.ajax({
     
 
 </script>
-<!--
 
-     $.ajax({
-        url:'../url/get_table.php',
-        data:{collection:collection},
-        method:'POST',
-       dataType: "json",
-    success: function(JSONObject) {
-      var peopleHTML = "";
-      
-      // Loop through Object and create peopleHTML
-      for (var key in JSONObject) {
-
-
-        if (JSONObject.hasOwnProperty(key)) {
-          
-     
-          
-            const remove= `<button class='removeOne btn-sm btn-danger' value='${JSONObject[key]['std_id']}'>Remove</button>`;
-            peopleHTML += "<tr>";
-            peopleHTML += "<td class='stdID'>" + JSONObject[key]["std_id"] + "</td>";
-            peopleHTML += "<td>" + JSONObject[key]["status"] + "</td>";
-            peopleHTML += "<td>" + remove  + "</td>";
-            peopleHTML += "</tr>";
-        }
-      }
-         $("#people tbody").html(peopleHTML);
-
-        $(".removeOne").on('click',function(){
-             /*
-              find the id Value  from the same row 
-            var dynbutton = $(this),
-                        tr = dynbutton.closest('tr');
-             var regno  = tr.find('td.stdID').text();
-
-             */
-                var regno = $(this).val();
-             console.log(regno + 'this value .');
-
-          if(regno != ''){
-
-            var someData ={'regno':regno,
-                      'collection':collection};
-            $.ajax({
-                    method:'GET',
-                      url:'../url/req_removeOne.php?action=Req_removeOne',
-              contentType:'application/json',    
-                  dataType:'json',
-                      data:someData,
-                  success:function(removeOnereq){
-
-                  console.log(removeOnereq);
-
-                  },
-                    error:function(error){
-                 
-
-                  }
-                });
-          }
-        });
-          
-    }
-    
-    });   
-  -->

@@ -20,7 +20,7 @@ const bp = require("body-parser");
 const qr = require("qrcode");
 const { render, compile } = require("ejs");
 const path = require("path");
-const e = require("express");
+
 const { isNull } = require("util");
 const { createConnection } = require("net");
 
